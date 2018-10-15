@@ -1,0 +1,79 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1030{\fonttbl{\f0\fnil\fcharset0 Tahoma;}{\f1\fnil Tahoma;}{\f2\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\li142\ri262\sa200\sl276\slmult1\b\f0\fs20\lang6\par
+DocBlocks \b0\par
+DocBlocks are divided into the following three parts. Each of these parts is optional, except that a Description may not exist without a Summary.\par
+\b Summary\b0\par
+Sometimes called a short description, provides a brief introduction into the function of the associated element. A Summary ends in one of these situations:\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\li142\ri262\sa200\sl276\slmult1 A dot is following by a line break, or\par
+{\pntext\f0 2.\tab}Two subsequent line breaks are encountered.\par
+
+\pard\li142\ri262\sa200\sl276\slmult1\b Description\b0\par
+Sometimes called the long description, can provide more information. Examples of additional information is a description of a function\rquote s algorithm, a usage example or description how a class fits in the whole of the application\rquote s architecture. The description ends when the first tag is encountered or when the DocBlock is closed.\par
+\b Tags and annotations\b0\par
+
+\pard\widctlpar\li142\ri262\sa160\sl252\slmult1\lang1033 Tags are single words prefixed by a "@" symbol. Tags inform parsers how to present information and modify display of documentation as well as allow the IDE to define variable types. All tags are optional, but if you use a tag, they do have specific requirements to parse properly.\par
+Tag: \b @abstract\line\b0 Usage:\line Description: Documents an abstract class, class variable or method\par
+Tag: \b @access\line\b0 Usage: public, private or protected\line Description: Documents access control for an element. @access private indicates that documentation of element be prevented\par
+Tag: \b @author\line\b0 Usage: author name <author@email>\line Description: Documents the author of the current element\par
+Tag: \b @copyright\line\b0 Usage: date name\line Description: Documents copyright information\par
+Tag: \b @deprecated\line\b0 Usage: version\line Description: Documents a method as deprecated\par
+Tag: \b @deprec\line\b0 Usage:\line Description: Same as @deprecated\par
+Tag: \b @example\line\b0 Usage: /path/to/example\line Description: Documents the location of an external saved example file\par
+Tag: \b @exception\line\b0 Usage:\line Description: Documents an exception thrown by a method \f1\emdash  also see @throws\par
+Tag: \b @global\line\b0 Usage: type $globalvarname\line Description: Documents a global variable or its use in a function or method\par
+Tag: \b @ignore\line\b0 Usage:\line Description: Prevents the documentation of an element\par
+Tag: \b @internal\line\b0 Usage:\line Description: Private information for advanced developers\par
+Tag: \b @license\line\b0 Usage:\line Description: Documents license information\par
+Tag: \b @link\line\b0 Usage: URL\line Description: Displays a hyperlink to a URL in the documentation\par
+Tag: \b @name\line\b0 Usage: global variable name\line Description: Specifies an alias for a variable. For example, $GLOBALS['myvariable'] becomes $myvariable\par
+Tag: \b @package\line\b0 Usage: name of a package\line Description: Documents a group of related classes and functions\par
+Tag: \b @param\line\b0 Usage: type [$varname] description\line Description: Documents a function parameter\par
+Tag: \b @return\line\b0 Usage: type description\line Description: This tag should not be used for constructors or methods defined with a void return type.\par
+Tag: \b @see\line\b0 Usage: element\line Description: Documents an association to any element (global variable, include, page, class, function, define, method, variable)\par
+Tag: \b @since\line\b0 Usage: version\line Description: Documents when a method was added to a class\par
+Tag: \b @static\line\b0 Usage:\line Description: Documents a static class or method\par
+Tag: \b @staticvar\line\b0 Usage: type\line Description: Documents a static variable's use in a function or class\par
+Tag: \b @subpackage\line\b0 Usage:\line Description: Specifies sub-package to group classes or functions and defines into. Requires @package tag\par
+Tag: \b @throws\line\b0 Usage:\line Description: Documents an exception thrown by a method\par
+Tag: \b @todo\line\b0 Usage:\line Description: Documents things that need to be done to the code at a later date\par
+Tag: \b @var\line\b0 Usage: type\line Description: A data type for a class variable\par
+Tag: \b @version\line\b0 Usage:\line Description: Provides the version number of a class or method\f0\par
+In addition, some parsers allow two additional inline tags: \{@id\}, used to allow direct linking to sections in a tutorial, and \{@toc\}, used to generate a table of contents from \{@id\}s in the file. Think of \{@id\} like an <a name="idname"> HTML tag as it serves the same function.\par
+For more in depth discussion of PHPDoc tags, see {{\field{\*\fldinst{HYPERLINK http://manual.phpdoc.org/HTMLSmartyConverter/PHP/phpDocumentor/tutorial_tags.pkg.html }}{\fldrslt{http://manual.phpdoc.org/HTMLSmartyConverter/PHP/phpDocumentor/tutorial_tags.pkg.html\ul0\cf0}}}}\f0\fs20\par
+\b Packages\par
+\b0 To understand the role of packages and how to use @package, it is important to know the logic behind packaging in PHP. The quest for structured programming led to the invention of functions, then classes, and finally packages. Traditionally, a re-usable software module was a collection of variables, constants and functions that could be used by another software package. PHP is an example of this model, as there are many extensions that consist of constants and functions like the tokenizer extension. One can think of the tokenizer extension as a package: it is a complete set of data, variables and functions that can be used in other programs. A more structured format of this model is of course objects, or classes. A class contains variables and functions. A single class packages together related functions and variables to be re-used.\par
+phpDocumentor defines package in two ways:\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent360{\pntxtb\'B7}}\li142\ri262\sa160\sl252\slmult1 Functions, Constants and Global Variables are grouped into files (by the filesystem), which are in turn grouped into packages using the @package tag in a page-level DocBlock\par
+{\pntext\f2\'B7\tab}Methods and Class Variables are grouped into classes (by PHP), which are in turn grouped into packages in a Class DocBlock\par
+
+\pard\widctlpar\li142\ri262\sa160\sl252\slmult1 These two definitions of package are exclusive. In other words, it is possible to have classes of a different package of the file that contains it.\par
+
+\pard\li142\ri262\sa200\sl276\slmult1\b\lang6\line Primitives\b0\par
+The PHPDoc Standard, can refer to all primitive types in PHP.\par
+Here is a full listing;\par
+\b string - \b0 A piece of text of an unspecified length.\par
+\b int \b0 or \b integer - \b0 A whole number that may be either positive or negative.\par
+\b float - \b0 A real, or decimal, number that may be either positive or negative.\par
+\b bool \b0 or \b boolean - \b0 A variable that can only contain the state \lquote true\rquote  or \lquote false\rquote .\par
+\b array - \b0 A collection of variables of unknown type. It is possible to specify the types of array members, see the chapter on arrays for more information.\par
+\b resource - \b0 A file handler or other system resource as described in the PHP manual.\par
+\b null - \b0 The value contained, or returned, is literally null. This type is not to be confused with void, which is the total absence of a variable or value (usually used with the @return tag).\par
+\b callable - \b0 A function or method that can be passed by a variable, see the PHP manual for more information on callables.\par
+\b Keywords\b0\par
+The PHPDoc Standard also describes several keywords that are not native to PHP but are found to be often used or are representations of situations that are convenient to describe.\par
+\b mixed - \b0 A value with this type can be literally anything; the author of the documentation is unable to predict which type it will be.\par
+\b void - \b0 This is not the value that you are looking for. The tag associated with this type does not intentionally return anything. Anything returned by the associated element is incidental and not to be relied on.\par
+\b object - \b0 An object of any class is returned,\par
+\b false \b0 or \b true - \b0 An explicit boolean value is returned; usually used when a method returns \lquote false\rquote  or something of consequence.\par
+\b self - \b0 An object of the class where this type was used, if inherited it will still represent the class where it was originally defined.\par
+\b static - \b0 An object of the class where this value was consumed, if inherited it will represent the child class. (see late static binding in the PHP manual).\par
+\b $this - \b0 This exact object instance, usually used to denote a fluent interface.\par
+\par
+}
+ 
