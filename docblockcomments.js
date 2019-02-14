@@ -9,7 +9,7 @@
  * @author    Peter Klein <pmk@io.dk>
  * @copyright 2016 Peter Klein
  * @license   http://www.freebsd.org/copyright/license.html  BSD License
- * @version   1.32
+ * @version   1.33
  */
 
 /**
@@ -138,7 +138,7 @@ function RemoveVarTrailing(str) {
  * @return string
  */
 function RemoveFuncTrailing(str) {
-	return RegexReplace(str, "\\s*(;|\\{|\\/\\/|\\/\\*).*$", "", true);
+	return RegexReplace(str, "\\s*(;|:|\\{|\\/\\/|\\/\\*).*$", "", true);
 }
 
 /**
@@ -977,7 +977,7 @@ function makeDoubleClickSelection() {
  * @return void
  */
 function OnInstalled() {
-  alert("DocBlock Comments 1.32 by Peter Klein installed sucessfully!");
+  alert("DocBlock Comments 1.33 by Peter Klein installed sucessfully!");
 }
 
 var bmp = new TBitmap, act;
